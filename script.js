@@ -1,7 +1,5 @@
 
 let selectedRow = null;
-
-
 function showAlert(message, className) {
   const div = document.createElement("div");
   div.className = `alert alert-${className}`;
@@ -16,9 +14,9 @@ function showAlert(message, className) {
 
 // Function to clear all form fields
 function clearFields() {
-  document.querySelector("#firstName").value = "";
-  document.querySelector("#lastName").value = "";
-  document.querySelector("#rollNo").value = "";
+  document.querySelector("#contactPerson").value = "";
+  document.querySelector("#address").value = "";
+  document.querySelector("#contactNumber").value = "";
 }
 
 // Function to handle form submission
@@ -26,23 +24,24 @@ document.querySelector("#student-form").addEventListener("submit", (e) => {
   e.preventDefault();
 
   // Get form values
-  const firstName = document.querySelector("#firstName").value;
-  const lastName = document.querySelector("#lastName").value;
-  const rollNo = document.querySelector("#rollNo").value;
+  const contactPerson = document.querySelector("#contactPerson").value;
+  const address = document.querySelector("#address").value;
+  const contactNumber = document.querySelector("#contactNumber").value;
 
   // Validate form fields
-  if (firstName === "" || lastName === "" || rollNo === "") {
+  if (contactPerson === "" || address === "" || contactNumber === "") {
     showAlert("PLEASE FILL ALL FIELDS", "danger");
   } else {
     if (selectedRow === null) {
+
       // Add a new row to the student list
       const list = document.querySelector("#student-list");
       const row = document.createElement("tr");
 
       row.innerHTML = `
-        <td>${firstName}</td>
-        <td>${lastName}</td>
-        <td>${rollNo}</td>
+        <td>${contactPerson}</td>
+        <td>${address}</td>
+        <td>${contactNumber}</td>
         <td>
           <a href="#" class="btn btn-warning btn-sm edit">Edit</a>
           <a href="#" class="btn btn-danger btn-sm delete">Delete</a>
@@ -53,9 +52,9 @@ document.querySelector("#student-form").addEventListener("submit", (e) => {
       showAlert("CONTACT ADDED SUCCESSFULLY", "success");
     } else {
       // Edit the selected row
-      selectedRow.children[0].textContent = firstName;
-      selectedRow.children[1].textContent = lastName;
-      selectedRow.children[2].textContent = rollNo;
+      selectedRow.children[0].textContent = contactPerson;
+      selectedRow.children[1].textContent = address;
+      selectedRow.children[2].textContent = contactNumber;
       selectedRow = null;
       showAlert("CONTACT INFO EDITED", "info");
     }
@@ -69,9 +68,9 @@ document.querySelector("#student-list").addEventListener("click", (e) => {
   const target = e.target;
   if (target.classList.contains("edit")) {
     selectedRow = target.parentElement.parentElement;
-    document.querySelector("#firstName").value = selectedRow.children[0].textContent;
-    document.querySelector("#lastName").value = selectedRow.children[1].textContent;
-    document.querySelector("#rollNo").value = selectedRow.children[2].textContent;
+    document.querySelector("#contactPerson").value = selectedRow.children[0].textContent;
+    document.querySelector("#address").value = selectedRow.children[1].textContent;
+    document.querySelector("#contactNumber").value = selectedRow.children[2].textContent;
   }
 });
 
