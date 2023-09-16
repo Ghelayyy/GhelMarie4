@@ -80,6 +80,6 @@ document.querySelector("#student-list").addEventListener("click", (e) => {
   const target = e.target;
   if (target.classList.contains("delete")) {
     target.parentElement.parentElement.remove();
-    showAlert("Student data deleted", "danger");
+    showAlert("CONTACT DELETED", "danger");
   }
 });
