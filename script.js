@@ -50,14 +50,14 @@ document.querySelector("#student-form").addEventListener("submit", (e) => {
       `;
 
       list.appendChild(row);
-      showAlert("STUDENT ADDED", "success");
+      showAlert("CONTACT ADDED SUCCESSFULLY", "success");
     } else {
       // Edit the selected row
       selectedRow.children[0].textContent = firstName;
       selectedRow.children[1].textContent = lastName;
       selectedRow.children[2].textContent = rollNo;
       selectedRow = null;
-      showAlert("STUDENT INFO EDITED", "info");
+      showAlert("CONTACT INFO EDITED", "info");
     }
 
     clearFields();
